@@ -1,3 +1,81 @@
-<h1>
-  {{title}}
-</h1>
+<div class="pipes">
+    <h1>Pipes:</h1>
+
+    <h2>Custom Pipes</h2>
+
+    <span>This pipe doubles the input value</span>
+    <input type="text" #input (keyup)="0">
+    <p>{{input.value | double}}</p>
+    <hr>
+
+    <span>This <strong>impure</strong> pipe only accepts input with 'ea' included</span>
+    <input type="text" #newItem>
+    <button (click)="values.push(newItem.value)" class="btn btn-primary">Add Item</button>
+    <ul>
+        <li *ngFor="let item of values | filter:'ea'">{{item}}</li>
+    </ul>
+    <hr>
+
+    <h2>Async Pipe</h2>
+    <p>{{asyncValue | async}}</p>
+    <hr>
+
+    <h2>Built-in Pipes</h2>
+    <p>&nbsp;</p>
+
+    <h4>Uppercase Pipe:</h4>
+    <p>{{myValue | uppercase}}</p>
+
+    <h4>Lowercase Pipe:</h4>
+    <p>{{myValue | lowercase}}</p>
+
+    <h4>Date Pipe:</h4>
+    <p>{{myDate | date:"MM/dd/yy"}}</p>
+
+    <h4>Slice Pipe:</h4>
+    <p>{{myValue | slice:5}}</p>
+    <p>{{myValue | slice:3:7 | uppercase}}</p> <!--chained pipes, order matters in most cases-->
+
+    <h4>Percent Pipe:</h4>
+    <div>
+        <p>A: {{a | percent}}</p>
+        <p>B: {{b | percent:'4.3-5'}}</p>
+    </div>
+
+    <h4>Currency Pipe:</h4>
+    <div>
+        <p>A: {{c | currency:'USD':false}}</p>
+        <p>B: {{d | currency:'USD':true:'4.2-2'}}</p>
+    </div>
+
+    <h4>Decimal Pipe:</h4>
+    <div>
+        <p>e (no formatting): {{e}}</p>
+        <p>e (3.1-5): {{e | number:'3.1-5'}}</p>
+        <p>pi (no formatting): {{pi}}</p>
+        <p>pi (3.5-5): {{pi | number:'3.5-5'}}</p>
+    </div>
+
+    <h4>Jason Pipe:</h4>
+    <div>
+        <p>Without JSON pipe:</p>
+        <pre>{{object}}</pre>
+        <p>With JSON pipe:</p>
+        <pre>{{object | json}}</pre>
+    </div>
+
+    <h4> i18nSelect Pipe:</h4>
+    <div>
+        {{ gender | i18nSelect: inviteMap }}
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
